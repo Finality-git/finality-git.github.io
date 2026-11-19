@@ -1,113 +1,223 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="qAYB0J2HkYLSwGVokLZsbdQkLNPNUstDIp3bNETiUaU" />
   <meta name="google-site-verification" content="w1Kc_06GY-Ak9Rmc-fRNUdlF4nHuDLqG1wwmUkgv6P8" />
-  <title>Shapify</title>
-  <meta name="description" content="Shapify is a fitness companion that tracks your steps, water, meals and workouts, with plans built around Nigerian meals and your goals." />
-  <link rel="icon" href="shapify-icon.png" />
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f6fffd;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --teal: #10b8ad;
-      --teal-dark: #0f766e;
-      --line: rgba(15, 118, 110, 0.14);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0b1120;
-        --card: #111a2e;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --teal: #2dd4bf;
-        --teal-dark: #5eead4;
-        --line: rgba(45, 212, 191, 0.2);
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-      color: var(--text);
-      background: var(--bg);
-    }
-    .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
-    header { padding: 20px 0; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: 0.08em; color: var(--teal-dark); }
-    .brand img { width: 40px; height: 40px; border-radius: 12px; }
-    .hero { padding: 40px 0 24px; text-align: center; }
-    .hero img { width: 112px; height: 112px; border-radius: 28px; box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12); }
-    .hero h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 20px 0 8px; line-height: 1.15; }
-    .hero p { color: var(--muted); font-size: 1.1rem; max-width: 560px; margin: 0 auto; }
-    .tag { display: inline-block; margin-top: 18px; padding: 8px 14px; border-radius: 999px; background: rgba(16, 184, 173, 0.12); color: var(--teal-dark); font-weight: 800; font-size: 0.9rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; padding: 24px 0; }
-    .card { padding: 18px; border-radius: 20px; background: var(--card); border: 1px solid var(--line); }
-    .card h3 { margin: 0 0 6px; color: var(--teal-dark); font-size: 1.05rem; }
-    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-    footer { padding: 28px 0 40px; border-top: 1px solid var(--line); margin-top: 24px; color: var(--muted); font-size: 0.92rem; }
-    footer nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 10px; }
-    a { color: var(--teal-dark); font-weight: 700; }
-  </style>
+  <title>Finality Studios: Games &amp; Apps from Nigeria</title>
+  <meta name="description" content="Finality Studios LTD is an independent studio from Nigeria, making Immortal Dynasty: Origin, a cultivation RPG, and Shapify, a fitness companion.">
+  <meta property="og:title" content="Finality Studios">
+  <meta property="og:description" content="Games worth getting lost in. Apps that help you show up for yourself. Made in Nigeria.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/id-dual-realms.webp">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/id-dual-realms.webp">
+  <link rel="stylesheet" href="styles.css?v=11">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Finality Studios",
+    "legalName": "Finality Studios LTD",
+    "foundingDate": "2026-06-05",
+    "address": { "@type": "PostalAddress", "addressCountry": "NG" },
+    "identifier": "RC 9593980",
+    "email": "finalitystudioltd@gmail.com"
+  }
+  </script>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand"><img src="shapify-icon.png" alt="" />SHAPIFY</div>
-    </header>
+  <header class="site-header">
+    <nav class="wrap nav" aria-label="Main">
+      <a href="index.html" class="brand"><span class="brand-mark">F</span>Finality Studios</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#immortal-dynasty">Games</a></li>
+        <li><a href="#shapify">Apps</a></li>
+        <li><a href="about.html">Studio</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="beta.html">Beta</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section class="hero">
-      <img src="shapify-icon.png" alt="Shapify logo" />
-      <h1>Small steps today.<br />Stronger tomorrow.</h1>
-      <p>
-        Shapify is your fitness companion for steps, water, meals and workouts, with
-        personal plans built around Nigerian meals, your budget and your goals.
-      </p>
-      <span class="tag">Coming soon to Google Play</span>
+  <main>
+    <!-- HERO: one slide per product -->
+    <section class="hero" aria-roledescription="carousel" aria-label="Featured products">
+      <div class="slide slide-id is-active" aria-roledescription="slide" aria-label="Immortal Dynasty: Origin">
+        <div class="slide-bg" style="background-image:url(assets/id-dual-realms.webp)"></div>
+        <img class="slide-art" src="assets/id-dual-realms.webp" alt="Immortal Dynasty: Origin key art: one cultivator split between a golden heavenly guardian and a crimson demon" fetchpriority="high">
+        <div class="slide-copy wrap">
+          <div>
+            <span class="eyebrow">Immortal Dynasty: Origin · Cultivation RPG</span>
+            <h1>Mortal to immortal.</h1>
+            <p>100+ realms. Heaven or Hell. The path is yours. Coming soon to Android.</p>
+            <div class="actions">
+              <a href="#immortal-dynasty" class="btn btn-gold">Discover the game <span class="arrow">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide slide-shapify" aria-roledescription="slide" aria-label="Shapify" aria-hidden="true">
+        <div class="slide-bg" style="background-image:url(assets/shapify-hero.webp)"></div>
+        <img class="slide-art" src="assets/shapify-hero.webp" alt="Shapify artwork: two athletes either side of the glowing Shapify logo" loading="lazy">
+        <div class="slide-copy wrap">
+          <div>
+            <span class="eyebrow">Shapify · Health &amp; Fitness</span>
+            <h1>Fitness made for you.</h1>
+            <p>Steps, water, Nigerian meal plans and workouts, with Shapy cheering you on. Coming soon to Android.</p>
+            <div class="actions">
+              <a href="#shapify" class="btn btn-teal">Meet Shapify <span class="arrow">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-dots">
+        <div class="wrap">
+          <button type="button" aria-label="Show Immortal Dynasty"><span></span></button>
+          <button type="button" aria-label="Show Shapify"><span></span></button>
+        </div>
+      </div>
+      <span class="scroll-cue" aria-hidden="true">Scroll</span>
     </section>
 
-    <section class="grid" aria-label="Features">
-      <div class="card">
-        <h3>Step tracking</h3>
-        <p>Count steps with your phone's sensor or a guided walking timer, with daily goals that adapt to you.</p>
-      </div>
-      <div class="card">
-        <h3>Hydration</h3>
-        <p>Log water in a tap and get gentle reminders through the day.</p>
-      </div>
-      <div class="card">
-        <h3>Nigerian meal plans</h3>
-        <p>Daily breakfast, lunch, dinner and snack ideas matched to your goal and budget.</p>
-      </div>
-      <div class="card">
-        <h3>Workouts and coach</h3>
-        <p>Home or gym routines with form and breathing tips for every move.</p>
-      </div>
-      <div class="card">
-        <h3>Levels and streaks</h3>
-        <p>Earn XP, keep your streak alive and unlock achievements as you progress.</p>
-      </div>
-      <div class="card">
-        <h3>Your progress, backed up</h3>
-        <p>Sign in with email or Google and pick up where you left off on any phone.</p>
+    <!-- STUDIO STATEMENT -->
+    <section class="statement">
+      <div class="wrap">
+        <p class="reveal">Finality Studios is an independent studio from Nigeria. <span class="dim">We make</span> <span class="gold">games worth getting lost in</span> <span class="dim">and</span> <span class="teal">apps that help you show up for yourself.</span></p>
       </div>
     </section>
 
-    <footer>
-      <nav aria-label="Legal">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="delete-account.html">Delete your account</a>
-        <a href="mailto:finalityStudioltd@gmail.com">Contact</a>
-      </nav>
-      © 2026 Finality Studios. Shapify provides general fitness guidance, not medical advice.
-    </footer>
-  </div>
+    <!-- IMMORTAL DYNASTY -->
+    <section class="game" id="immortal-dynasty">
+      <div class="wrap game-head">
+        <div class="reveal">
+          <span class="eyebrow"><img src="assets/immortal-dynasty-icon.webp" alt="" width="44" height="44">Our game · Cultivation RPG</span>
+          <h2>Immortal Dynasty: Origin</h2>
+          <p>Choose your bloodline, origin and spiritual root. Cultivate, battle and break through realm after realm, then decide what kind of immortal you become.</p>
+        </div>
+      </div>
+
+      <div class="realms reveal d1">
+        <figure class="realm earth is-open" tabindex="0">
+          <img src="assets/id-earth.webp" alt="A cultivator overlooking a vast green world of mountains and rivers" loading="lazy">
+          <figcaption><span>World I</span><strong>Earth</strong><em>Where every cultivator begins: sects, cities, dungeons and dragons' gates.</em></figcaption>
+        </figure>
+        <figure class="realm heaven" tabindex="0">
+          <img src="assets/id-heaven.webp" alt="A cultivator ascending through radiant clouds toward a golden gate" loading="lazy">
+          <figcaption><span>World II</span><strong>Heaven</strong><em>Ascend, and walk among the pantheons.</em></figcaption>
+        </figure>
+        <figure class="realm hell" tabindex="0">
+          <img src="assets/id-hell.webp" alt="A cultivator descending into a crimson abyss beneath a dark sun" loading="lazy">
+          <figcaption><span>World III</span><strong>Hell</strong><em>Fall, and the abyss offers a power of its own.</em></figcaption>
+        </figure>
+      </div>
+
+      <div class="wrap">
+        <div class="stats">
+          <div class="stat reveal"><strong>100+</strong><span>realms to break through</span></div>
+          <div class="stat reveal d1"><strong>3</strong><span>worlds: Earth, Heaven and Hell</span></div>
+          <div class="stat reveal d2"><strong>1</strong><span>path that's entirely yours</span></div>
+        </div>
+        <div class="product-foot">
+          <span class="pill">Coming soon to Google Play</span>
+          <nav class="policy-links" aria-label="Immortal Dynasty policies">
+            <a href="/immortal-dynasty-privacy.html">Privacy Policy</a>
+            <a href="/delete-immortal-dynasty-account.html">Delete account</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHAPIFY -->
+    <section class="app" id="shapify">
+      <div class="wrap app-grid">
+        <div class="reveal">
+          <span class="eyebrow"><img src="assets/shapify-icon.webp" alt="" width="44" height="44">Our app · Health &amp; Fitness</span>
+          <h2>Shapify</h2>
+          <p class="tagline">Small steps today.<br>Stronger tomorrow.</p>
+          <p class="body">Steps, water, meals and workouts in one friendly app, with personal plans built around Nigerian meals, your budget and your goals, and Shapy, your coach, chef and cheerleader.</p>
+          <ul class="chips">
+            <li>Step goals</li>
+            <li>Water reminders</li>
+            <li>Nigerian meal plans</li>
+            <li>Home &amp; gym workouts</li>
+            <li>XP &amp; streaks</li>
+            <li>Cloud backup</li>
+          </ul>
+        </div>
+        <div class="mascots reveal d1" aria-hidden="true">
+          <img class="m-chef" src="assets/shapy-chef-neon.webp" alt="" loading="lazy">
+          <img class="m-plan" src="assets/shapy-coach-neon.webp" alt="" loading="lazy">
+          <img class="m-workout" src="assets/shapy-general-neon.webp" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="screens">
+        <figure class="reveal"><img src="assets/shapify-screen-1.webp" alt="Shapify home screen: your day at a glance" width="540" height="960" loading="lazy"></figure>
+        <figure class="reveal d1"><img src="assets/shapify-screen-2.webp" alt="Shapify steps screen: hit your step goal" width="540" height="960" loading="lazy"></figure>
+        <figure class="reveal d2"><img src="assets/shapify-screen-3.webp" alt="Shapify water screen: stay hydrated" width="540" height="960" loading="lazy"></figure>
+        <figure class="reveal d1"><img src="assets/shapify-screen-4.webp" alt="Shapify diet screen: Nigerian meal plans" width="540" height="960" loading="lazy"></figure>
+        <figure class="reveal"><img src="assets/shapify-screen-5.webp" alt="Shapify workouts screen: workouts made for you" width="540" height="960" loading="lazy"></figure>
+      </div>
+      <div class="wrap">
+        <div class="product-foot">
+          <span class="pill">Coming soon to Google Play</span>
+          <nav class="policy-links" aria-label="Shapify policies">
+            <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms</a>
+            <a href="/delete-account.html">Delete account</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="wrap reveal">
+        <h2>Say hello.</h2>
+        <p>Players, partners, press or anyone with a good idea, we'd love to hear from you.</p>
+        <a class="mail" href="mailto:finalitystudioltd@gmail.com">finalitystudioltd@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="brand"><span class="brand-mark">F</span>Finality Studios</a>
+          <p>An independent games and apps studio from Nigeria.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Products</h4>
+            <ul><li><a href="#immortal-dynasty">Immortal Dynasty</a></li><li><a href="#shapify">Shapify</a></li></ul>
+          </div>
+          <div>
+            <h4>Studio</h4>
+            <ul><li><a href="about.html">About</a></li><li><a href="careers.html">Careers</a></li><li><a href="beta.html">Join the beta</a></li><li><a href="#contact">Contact</a></li></ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul><li><a href="legal/privacy.html">Privacy Policy</a></li><li><a href="legal/terms.html">Terms of Service</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="legal-line">
+        <span>© <span data-year>2026</span> Finality Studios LTD. All rights reserved.</span>
+        <span>RC 9593980 · Incorporated in Nigeria</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=11"></script>
 </body>
 </html>
