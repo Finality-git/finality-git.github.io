@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Join the Beta — Finality Studios</title>
-  <meta name="description" content="Register to beta test Immortal Dynasty: Origin and Shapify before launch.">
+  <meta name="description" content="Create a beta account to test Immortal Dynasty: Origin and Shapify before launch.">
   <meta name="theme-color" content="#07080c">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
   <header class="site-header is-solid">
@@ -24,6 +24,7 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="beta.html" aria-current="page">Beta</a></li>
         <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="login.html" class="nav-account" data-account-link>Log in</a></li>
       </ul>
     </nav>
   </header>
@@ -33,68 +34,61 @@
       <div class="wrap">
         <span class="eyebrow reveal">Beta program</span>
         <h1 class="reveal d1">Play it before anyone else.</h1>
-        <p class="reveal d2">Help shape Immortal Dynasty: Origin and Shapify before launch. Register below, and if you're selected for the beta team, we'll email you with everything you need to get started.</p>
+        <p class="reveal d2">Create a beta account to help shape Immortal Dynasty: Origin and Shapify before launch. Our team reviews every request, and once you're approved you can log in to the tester dashboard.</p>
       </div>
     </section>
 
     <section class="beta">
       <div class="wrap beta-grid">
         <ol class="steps reveal">
-          <li><strong>Register</strong>Tell us who you are and which product you'd like to test.</li>
-          <li><strong>Selection</strong>We pick testers in small groups as each beta opens. Not everyone is selected in the first round.</li>
-          <li><strong>Check your email</strong>If you're selected, we'll email you with how to join, usually through Google Play's testing program on Android.</li>
-          <li><strong>Play and give feedback</strong>Report bugs, share ideas and help us make it great.</li>
+          <li><strong>Create a beta account</strong>Tell us who you are and what you'd like to test.</li>
+          <li><strong>We review it</strong>We pick testers in small groups as each beta opens. While your account is under review, the dashboard stays locked.</li>
+          <li><strong>Get approved</strong>We'll email you when you're in. Then log in with your beta account.</li>
+          <li><strong>Test and tell us</strong>Join projects, get the test builds, and send reviews, bug reports and suggestions from your dashboard.</li>
         </ol>
 
-        <!--
-          SET UP: sign-ups are saved to a Google Sheet in the studio's Google account.
-          Follow _setup/beta-google-sheet.md, then paste the web app URL into data-endpoint below, e.g.
-          data-endpoint="https://script.google.com/macros/s/XXXXXXXX/exec"
-          Until it's set, the form shows a "not open yet" message and sends nothing.
-        -->
-        <form class="form reveal d1" id="beta-form" data-endpoint="" novalidate>
+        <form class="form reveal d1" id="register-form" novalidate>
+          <p class="form-note" id="signed-in-note" hidden>You're already logged in. <a href="portal.html">Go to your dashboard</a>.</p>
           <div class="field">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" autocomplete="name" required maxlength="80" placeholder="Your name">
+            <input type="text" id="name" autocomplete="name" required maxlength="80" placeholder="Your name">
             <span class="error" id="name-error" role="alert"></span>
           </div>
-
           <div class="field">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email" required maxlength="120" placeholder="you@example.com" aria-describedby="email-hint">
-            <span class="hint" id="email-hint">We'll only use this to contact you about the beta.</span>
+            <input type="email" id="email" autocomplete="email" required maxlength="254" placeholder="you@example.com" aria-describedby="email-hint">
+            <span class="hint" id="email-hint">You'll log in with this, and we'll email you about your request here.</span>
             <span class="error" id="email-error" role="alert"></span>
           </div>
-
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw"><input type="password" id="password" autocomplete="new-password" required minlength="8" maxlength="200" placeholder="At least 8 characters"><button type="button" class="pw-toggle" data-toggle-password="password" aria-pressed="false" aria-label="Show password">Show</button></div>
+            <span class="error" id="password-error" role="alert"></span>
+          </div>
           <div class="field">
             <label for="discord">Discord username <span class="opt">(optional)</span></label>
-            <input type="text" id="discord" name="discord" maxlength="40" placeholder="e.g. cultivator_01" autocomplete="off" spellcheck="false">
+            <input type="text" id="discord" maxlength="40" placeholder="e.g. cultivator_01" autocomplete="off" spellcheck="false">
             <span class="error" id="discord-error" role="alert"></span>
           </div>
-
           <fieldset class="field">
-            <legend>I want to test</legend>
+            <legend>I'd like to test</legend>
             <div class="choices">
-              <label class="choice"><input type="radio" name="product" value="Immortal Dynasty: Origin"><span>Immortal Dynasty</span></label>
-              <label class="choice"><input type="radio" name="product" value="Shapify"><span>Shapify</span></label>
-              <label class="choice"><input type="radio" name="product" value="Both" checked><span>Both</span></label>
+              <label class="choice"><input type="checkbox" name="interests" value="immortal-dynasty" checked><span>Immortal Dynasty</span></label>
+              <label class="choice"><input type="checkbox" name="interests" value="shapify" checked><span>Shapify</span></label>
             </div>
           </fieldset>
-
-          <!-- Spam trap: real people never see or fill this -->
           <div class="hp" aria-hidden="true">
             <label for="website">Leave this empty</label>
-            <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
           </div>
-
           <label class="consent">
-            <input type="checkbox" id="consent" name="consent" value="yes" required>
+            <input type="checkbox" id="consent" required>
             <span>I agree that Finality Studios may store my details to run the beta program and contact me by email, as described in the <a href="legal/privacy.html">Privacy Policy</a>.</span>
           </label>
           <span class="error" id="consent-error" role="alert"></span>
-
-          <button class="btn btn-gold" type="submit">Register for the beta <span class="arrow">→</span></button>
+          <button class="btn btn-gold" type="submit">Create beta account <span class="arrow">→</span></button>
           <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          <p class="form-alt">Already registered? <a href="login.html">Log in</a></p>
         </form>
       </div>
     </section>
@@ -129,6 +123,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=11"></script>
+    <script src="script.js?v=12"></script>
+  <script src="beta.js?v=2"></script>
 </body>
 </html>

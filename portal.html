@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beta Dashboard — Finality Studios</title>
+  <meta name="description" content="Finality Studios beta tester dashboard.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+  <header class="site-header is-solid">
+    <nav class="wrap nav" aria-label="Main">
+      <a href="index.html" class="brand"><span class="brand-mark">F</span>Finality Studios</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#immortal-dynasty">Games</a></li>
+        <li><a href="index.html#shapify">Apps</a></li>
+        <li><a href="about.html">Studio</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="beta.html">Beta</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="login.html" class="nav-account" data-account-link>Log in</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="portal" class="portal">
+    <div class="wrap">
+      <div class="portal-top">
+        <div>
+          <span class="eyebrow">Beta dashboard</span>
+          <h1>Hi, <span data-account-name>tester</span>.</h1>
+        </div>
+        <div class="portal-user">
+          <a href="admin.html" class="btn btn-ghost btn-sm" id="admin-link" hidden>Admin</a>
+          <button class="btn btn-ghost btn-sm" data-logout>Log out</button>
+        </div>
+      </div>
+
+      <p id="portal-loading" class="muted">Loading your account…</p>
+
+      <section class="review-state" id="review-state" hidden>
+        <div class="review-icon" aria-hidden="true">⧗</div>
+        <h2 id="review-title">Your account is under review</h2>
+        <p id="review-text"></p>
+        <p id="review-reason" class="muted" hidden></p>
+        <p class="muted small" id="review-date"></p>
+        <a class="btn btn-ghost btn-sm" href="index.html">Back to the website</a>
+      </section>
+
+      <div id="dashboard" hidden>
+        <div class="tabs" role="tablist" aria-label="Dashboard">
+          <button role="tab" id="t-discover" aria-controls="p-discover" data-tab="discover">Discover</button>
+          <button role="tab" id="t-projects" aria-controls="p-projects" data-tab="projects">Projects</button>
+          <button role="tab" id="t-reviews" aria-controls="p-reviews" data-tab="reviews">Reviews</button>
+          <button role="tab" id="t-bugs" aria-controls="p-bugs" data-tab="bugs">Report bug</button>
+          <button role="tab" id="t-suggestions" aria-controls="p-suggestions" data-tab="suggestions">Suggestions</button>
+        </div>
+
+        <section role="tabpanel" id="p-discover" aria-labelledby="t-discover" class="tab-panel">
+          <p class="panel-intro">Projects that are open for testing right now. Join one to get the test build.</p>
+          <div class="project-grid" id="discover-list"></div>
+        </section>
+
+        <section role="tabpanel" id="p-projects" aria-labelledby="t-projects" class="tab-panel" hidden>
+          <p class="panel-intro">The games and apps you're testing.</p>
+          <div class="project-grid" id="projects-list"></div>
+        </section>
+
+        <section role="tabpanel" id="p-reviews" aria-labelledby="t-reviews" class="tab-panel" hidden>
+          <div class="split">
+            <form class="form" id="review-form" data-reload="reviews" novalidate>
+              <h2>Review a product</h2>
+              <label class="field"><span>Project</span><select name="project" data-projects="joined"></select></label>
+              <p class="needs-project muted small" hidden>Join a project in <button type="button" class="link-btn" data-goto="discover">Discover</button> first.</p>
+              <div class="field"><span class="label">Your rating</span>
+                <div class="rate" role="group" aria-label="Rating">
+                  <button type="button" data-value="1" aria-label="1 star" aria-pressed="false">★</button><button type="button" data-value="2" aria-label="2 stars" aria-pressed="false">★</button><button type="button" data-value="3" aria-label="3 stars" aria-pressed="false">★</button><button type="button" data-value="4" aria-label="4 stars" aria-pressed="false">★</button><button type="button" data-value="5" aria-label="5 stars" aria-pressed="false">★</button>
+                </div>
+                <input type="hidden" id="review-rating" value="">
+              </div>
+              <label class="field"><span>Title</span><input type="text" name="title" maxlength="120" placeholder="Sum it up in a few words"></label>
+              <label class="field"><span>Your review</span><textarea name="body" rows="5" maxlength="4000" placeholder="What did you enjoy? What didn't work for you?"></textarea></label>
+              <button class="btn btn-gold" type="submit">Send review <span class="arrow">→</span></button>
+              <div class="form-status" role="status" aria-live="polite"></div>
+            </form>
+            <div><h3 class="list-title">Your reviews</h3><div id="reviews-list" class="entries"></div></div>
+          </div>
+        </section>
+
+        <section role="tabpanel" id="p-bugs" aria-labelledby="t-bugs" class="tab-panel" hidden>
+          <div class="split">
+            <form class="form" id="bug-form" data-reload="bugs" novalidate>
+              <h2>Report a bug</h2>
+              <label class="field"><span>Project</span><select name="project" data-projects="joined"></select></label>
+              <p class="needs-project muted small" hidden>Join a project in <button type="button" class="link-btn" data-goto="discover">Discover</button> first.</p>
+              <label class="field"><span>Short title</span><input type="text" name="title" maxlength="120" placeholder="e.g. Game freezes when opening the Guild Estate"></label>
+              <label class="field"><span>What happened, and how can we make it happen again?</span><textarea name="steps" rows="5" maxlength="4000" placeholder="1. Open…&#10;2. Tap…&#10;3. The screen…"></textarea></label>
+              <label class="field"><span>What did you expect? <span class="opt">(optional)</span></span><textarea name="expected" rows="2" maxlength="2000"></textarea></label>
+              <div class="grid-2">
+                <label class="field"><span>Phone and Android version <span class="opt">(optional)</span></span><input type="text" name="device" maxlength="120" placeholder="e.g. Tecno Spark 10, Android 13"></label>
+                <label class="field"><span>How bad is it?</span><select name="severity"><option value="low">Low: small annoyance</option><option value="medium" selected>Medium: gets in the way</option><option value="high">High: can't continue</option><option value="critical">Critical: crash or lost progress</option></select></label>
+              </div>
+              <button class="btn btn-gold" type="submit">Send bug report <span class="arrow">→</span></button>
+              <div class="form-status" role="status" aria-live="polite"></div>
+            </form>
+            <div><h3 class="list-title">Your bug reports</h3><div id="bugs-list" class="entries"></div></div>
+          </div>
+        </section>
+
+        <section role="tabpanel" id="p-suggestions" aria-labelledby="t-suggestions" class="tab-panel" hidden>
+          <div class="split">
+            <form class="form" id="suggestion-form" data-reload="suggestions" novalidate>
+              <h2>Suggestion box</h2>
+              <label class="field"><span>Project</span><select name="project" data-projects="general"></select></label>
+              <p class="needs-project muted small" hidden>Join a project in <button type="button" class="link-btn" data-goto="discover">Discover</button> first.</p>
+              <label class="field"><span>Your idea</span><textarea name="body" rows="6" maxlength="4000" placeholder="A feature, a change, anything that would make it better."></textarea></label>
+              <button class="btn btn-gold" type="submit">Drop it in the box <span class="arrow">→</span></button>
+              <div class="form-status" role="status" aria-live="polite"></div>
+            </form>
+            <div><h3 class="list-title">Your suggestions</h3><div id="suggestions-list" class="entries"></div></div>
+          </div>
+        </section>
+      </div>
+
+      <p class="portal-foot" id="portal-foot" hidden><button class="link-btn" data-delete-account>Delete my beta account</button></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="brand"><span class="brand-mark">F</span>Finality Studios</a>
+          <p>An independent games and apps studio from Nigeria.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Products</h4>
+            <ul><li><a href="index.html#immortal-dynasty">Immortal Dynasty</a></li><li><a href="index.html#shapify">Shapify</a></li></ul>
+          </div>
+          <div>
+            <h4>Studio</h4>
+            <ul><li><a href="about.html">About</a></li><li><a href="careers.html">Careers</a></li><li><a href="beta.html">Join the beta</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul><li><a href="legal/privacy.html">Privacy Policy</a></li><li><a href="legal/terms.html">Terms of Service</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="legal-line">
+        <span>© <span data-year>2026</span> Finality Studios LTD. All rights reserved.</span>
+        <span>RC 9593980 · Incorporated in Nigeria</span>
+      </div>
+    </div>
+  </footer>
+
+    <script src="script.js?v=12"></script>
+  <script src="beta.js?v=2"></script>
+</body>
+</html>

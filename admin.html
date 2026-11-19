@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beta Admin — Finality Studios</title>
+  <meta name="description" content="Finality Studios beta admin.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+<body>
+  <header class="site-header is-solid">
+    <nav class="wrap nav" aria-label="Main">
+      <a href="index.html" class="brand"><span class="brand-mark">F</span>Finality Studios</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#immortal-dynasty">Games</a></li>
+        <li><a href="index.html#shapify">Apps</a></li>
+        <li><a href="about.html">Studio</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="beta.html">Beta</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="login.html" class="nav-account" data-account-link>Log in</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="admin" class="portal">
+    <div class="wrap">
+      <div class="portal-top">
+        <div>
+          <span class="eyebrow">Beta admin</span>
+          <h1>Review queue</h1>
+        </div>
+        <div class="portal-user">
+          <a href="portal.html" class="btn btn-ghost btn-sm">Tester view</a>
+          <button class="btn btn-ghost btn-sm" data-logout>Log out</button>
+        </div>
+      </div>
+
+      <p id="admin-loading" class="muted">Loading…</p>
+
+      <div id="admin-panel" hidden>
+        <div class="admin-stats">
+          <div><strong id="sum-pending">0</strong><span>waiting for review</span></div>
+          <div><strong id="sum-approved">0</strong><span>approved testers</span></div>
+          <div><strong id="sum-bugs">0</strong><span>open bugs</span></div>
+          <div><strong id="sum-feedback">0</strong><span>reviews and suggestions</span></div>
+        </div>
+        <p class="form-status err" id="email-off" hidden>Email isn't set up on the server, so approved and rejected people won't get an email. Let them know yourself for now.</p>
+
+        <div class="tabs" role="tablist" aria-label="Admin">
+          <button role="tab" id="t-requests" aria-controls="p-requests" data-tab="requests">Requests <span class="count" id="pending-count"></span></button>
+          <button role="tab" id="t-bugs" aria-controls="p-bugs" data-tab="bugs">Bugs</button>
+          <button role="tab" id="t-reviews" aria-controls="p-reviews" data-tab="reviews">Reviews</button>
+          <button role="tab" id="t-suggestions" aria-controls="p-suggestions" data-tab="suggestions">Suggestions</button>
+          <button role="tab" id="t-projects" aria-controls="p-projects" data-tab="projects">Projects</button>
+        </div>
+
+        <section role="tabpanel" id="p-requests" aria-labelledby="t-requests" class="tab-panel">
+          <div class="filters" role="group" aria-label="Show">
+            <button class="chip-btn" data-request-filter="pending" aria-pressed="true">Under review</button>
+            <button class="chip-btn" data-request-filter="approved" aria-pressed="false">Approved</button>
+            <button class="chip-btn" data-request-filter="rejected" aria-pressed="false">Rejected</button>
+          </div>
+          <div class="form-status" id="requests-note" role="status" aria-live="polite"></div>
+          <div class="entries" id="requests-list"></div>
+        </section>
+
+        <section role="tabpanel" id="p-bugs" aria-labelledby="t-bugs" class="tab-panel" hidden>
+          <div class="filters"><label class="inline-select">Show <select id="bug-filter"><option value="">All bugs</option><option value="open" selected>Open</option><option value="in-progress">In progress</option><option value="fixed">Fixed</option><option value="wont-fix">Won't fix</option></select></label></div>
+          <div class="entries" id="admin-bugs"></div>
+        </section>
+
+        <section role="tabpanel" id="p-reviews" aria-labelledby="t-reviews" class="tab-panel" hidden><div class="entries" id="admin-reviews"></div></section>
+        <section role="tabpanel" id="p-suggestions" aria-labelledby="t-suggestions" class="tab-panel" hidden><div class="entries" id="admin-suggestions"></div></section>
+        <section role="tabpanel" id="p-projects" aria-labelledby="t-projects" class="tab-panel" hidden>
+          <p class="panel-intro">What testers see in Discover. Paste each project's test build link (for example a Google Play internal or closed testing link) so testers who join can get it.</p>
+          <div class="entries" id="admin-projects"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="brand"><span class="brand-mark">F</span>Finality Studios</a>
+          <p>An independent games and apps studio from Nigeria.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Products</h4>
+            <ul><li><a href="index.html#immortal-dynasty">Immortal Dynasty</a></li><li><a href="index.html#shapify">Shapify</a></li></ul>
+          </div>
+          <div>
+            <h4>Studio</h4>
+            <ul><li><a href="about.html">About</a></li><li><a href="careers.html">Careers</a></li><li><a href="beta.html">Join the beta</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul><li><a href="legal/privacy.html">Privacy Policy</a></li><li><a href="legal/terms.html">Terms of Service</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="legal-line">
+        <span>© <span data-year>2026</span> Finality Studios LTD. All rights reserved.</span>
+        <span>RC 9593980 · Incorporated in Nigeria</span>
+      </div>
+    </div>
+  </footer>
+
+    <script src="script.js?v=12"></script>
+  <script src="beta.js?v=2"></script>
+</body>
+</html>
