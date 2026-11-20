@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reset password — Finality Studios Beta</title>
+  <meta name="description" content="Reset the password for your Finality Studios beta account.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=14">
+</head>
+<body>
+  <header class="site-header is-solid">
+    <nav class="wrap nav" aria-label="Main">
+      <a href="index.html" class="brand"><span class="brand-mark">F</span>Finality Studios</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#immortal-dynasty">Games</a></li>
+        <li><a href="index.html#shapify">Apps</a></li>
+        <li><a href="about.html">Studio</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="beta.html">Beta</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="login.html" class="nav-account" data-account-link>Log in</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="auth">
+      <div class="wrap auth-wrap">
+        <div class="auth-intro reveal">
+          <span class="eyebrow">Beta testers</span>
+          <h1>Forgot your password?</h1>
+          <p>Enter your beta account email and we'll send you a 6-digit code. Then choose a new password.</p>
+        </div>
+
+        <form class="form reveal d1" id="forgot-form" novalidate>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+            <span class="error" id="email-error" role="alert"></span>
+          </div>
+          <button class="btn btn-gold" type="submit">Send me a code <span class="arrow">→</span></button>
+          <div class="form-status" id="forgot-status" role="status" aria-live="polite"></div>
+          <p class="form-alt"><button type="button" class="link-btn" id="have-code">I already have a code</button><br><a href="login.html">Back to log in</a></p>
+        </form>
+
+        <form class="form" id="reset-form" novalidate hidden>
+          <p class="form-note" id="reset-intro">We sent a code to <strong id="reset-email"></strong> if it has a beta account. It expires in 15 minutes.</p>
+          <div class="field" id="reset-email-field" hidden>
+            <label for="reset-email-input">Email</label>
+            <input type="email" id="reset-email-input" autocomplete="email" maxlength="254" placeholder="you@example.com">
+            <span class="error" id="reset-email-input-error" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="code">6-digit code</label>
+            <input type="text" id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="7" placeholder="123456" class="code-input">
+            <span class="error" id="code-error" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="new-password">New password</label>
+            <div class="pw"><input type="password" id="new-password" autocomplete="new-password" minlength="8" maxlength="200" placeholder="At least 8 characters"><button type="button" class="pw-toggle" data-toggle-password="new-password" aria-pressed="false" aria-label="Show password">Show</button></div>
+            <span class="error" id="new-password-error" role="alert"></span>
+          </div>
+          <button class="btn btn-gold" type="submit">Set new password <span class="arrow">→</span></button>
+          <div class="form-status" id="reset-status" role="status" aria-live="polite"></div>
+          <p class="form-alt"><button type="button" class="link-btn" id="resend">Send a new code</button><br><a href="login.html">Back to log in</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="brand"><span class="brand-mark">F</span>Finality Studios</a>
+          <p>An independent games and apps studio from Nigeria.</p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Products</h4>
+            <ul><li><a href="index.html#immortal-dynasty">Immortal Dynasty</a></li><li><a href="index.html#shapify">Shapify</a></li></ul>
+          </div>
+          <div>
+            <h4>Studio</h4>
+            <ul><li><a href="about.html">About</a></li><li><a href="careers.html">Careers</a></li><li><a href="beta.html">Join the beta</a></li><li><a href="index.html#contact">Contact</a></li></ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul><li><a href="legal/privacy.html">Privacy Policy</a></li><li><a href="legal/terms.html">Terms of Service</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="legal-line">
+        <span>© <span data-year>2026</span> Finality Studios LTD. All rights reserved.</span>
+        <span>RC 9593980 · Incorporated in Nigeria</span>
+      </div>
+    </div>
+  </footer>
+
+    <script src="script.js?v=12"></script>
+  <script src="beta.js?v=4"></script>
+</body>
+</html>

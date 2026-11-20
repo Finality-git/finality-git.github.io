@@ -504,3 +504,4 @@ button.btn-ghost { background: none; }
 .wake-note { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 80; max-width: calc(100% - 32px); background: #14161e; border: 1px solid rgba(232, 181, 74, .4); color: var(--gold-soft); padding: 12px 18px; border-radius: 12px; font-size: .9rem; box-shadow: 0 10px 40px rgba(0, 0, 0, .5); }
 .portal-foot { margin-top: 60px; text-align: center; font-size: .85rem; }
 .portal-foot .link-btn { color: var(--muted); }
+.code-input { letter-spacing: .4em; font-size: 1.3rem !important; font-variant-numeric: tabular-nums; }

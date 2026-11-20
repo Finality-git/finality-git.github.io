@@ -144,6 +144,71 @@
     });
   }
 
+  // ---------- Forgot password (forgot.html) ----------
+  const forgotForm = $('#forgot-form');
+  if (forgotForm) {
+    const resetForm = $('#reset-form');
+    let resetEmail = '';
+    const showReset = (email, justSent) => {
+      resetEmail = email;
+      forgotForm.hidden = true;
+      resetForm.hidden = false;
+      $('#reset-intro').hidden = !email;
+      $('#reset-email-field').hidden = !!email;
+      if (email) {
+        $('#reset-intro').innerHTML = (justSent ? 'We sent a code to <strong></strong> if it has a beta account. It expires in 15 minutes.' : 'Enter the code we emailed to <strong></strong>.');
+        $('#reset-intro strong').textContent = email;
+      }
+      (email ? $('#code') : $('#reset-email-input')).focus();
+    };
+    async function sendCode(email, statusEl, button) {
+      busy(button, true, 'Sending…');
+      try {
+        await api('/forgot-password', { method: 'POST', auth: false, body: { email } });
+        return true;
+      } catch (err) { setStatus(statusEl, 'err', err.message); return false; }
+      finally { busy(button, false); }
+    }
+    forgotForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const status = $('#forgot-status');
+      setStatus(status);
+      const email = $('#email').value.trim();
+      if (!fieldError('email', emailOk(email) ? '' : 'Please enter a valid email address.')) return;
+      if (await sendCode(email, status, forgotForm.querySelector('button[type="submit"]'))) showReset(email, true);
+    });
+    $('#have-code').addEventListener('click', () => showReset(emailOk($('#email').value) ? $('#email').value.trim() : ''));
+    $('#resend').addEventListener('click', async e => {
+      const status = $('#reset-status');
+      const email = resetEmail || $('#reset-email-input').value.trim();
+      if (!emailOk(email)) { setStatus(status, 'err', 'Enter your email first.'); return; }
+      setStatus(status);
+      if (await sendCode(email, status, e.target)) setStatus(status, 'ok', 'If a beta account exists for that email, a new code is on its way. Codes can be sent once a minute.');
+    });
+    resetForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const status = $('#reset-status');
+      setStatus(status);
+      const email = resetEmail || $('#reset-email-input').value.trim();
+      const code = $('#code').value.replace(/\D/g, '');
+      const password = $('#new-password').value;
+      const ok = [
+        resetEmail || fieldError('reset-email-input', emailOk(email) ? '' : 'Please enter your email.'),
+        fieldError('code', code.length === 6 ? '' : 'Enter the 6-digit code from the email.'),
+        fieldError('new-password', password.length >= 8 ? '' : 'Use at least 8 characters.'),
+      ];
+      if (ok.includes(false)) return;
+      const button = resetForm.querySelector('button[type="submit"]');
+      busy(button, true, 'Saving…');
+      try {
+        const data = await api('/reset-password', { method: 'POST', auth: false, body: { email, code, password } });
+        store.set(data.token);
+        setStatus(status, 'ok', 'Password changed. Taking you to your dashboard…');
+        setTimeout(() => { location.href = data.account.role === 'admin' ? 'admin.html' : 'portal.html'; }, 900);
+      } catch (err) { setStatus(status, 'err', err.message); busy(button, false); }
+    });
+  }
+
   // Log out buttons
   document.querySelectorAll('[data-logout]').forEach(b => b.addEventListener('click', () => { store.clear(); location.href = 'login.html'; }));
 
