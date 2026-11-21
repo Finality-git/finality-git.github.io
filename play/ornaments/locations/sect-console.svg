@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" fill="none">
+  <defs>
+    <linearGradient id="frameMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7FCFF"/>
+      <stop offset="0.22" stop-color="#A9D6F8"/>
+      <stop offset="0.48" stop-color="#E7F5FF"/>
+      <stop offset="0.72" stop-color="#789CCB"/>
+      <stop offset="1" stop-color="#D8EEFF"/>
+    </linearGradient>
+    <linearGradient id="frameDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#315C93"/>
+      <stop offset="1" stop-color="#0D254B"/>
+    </linearGradient>
+    <linearGradient id="titleFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#173B78" stop-opacity="0.98"/>
+      <stop offset="0.55" stop-color="#0C285A" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#071A3C" stop-opacity="0.98"/>
+    </linearGradient>
+    <linearGradient id="glassFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E2E5E" stop-opacity="0.58"/>
+      <stop offset="0.55" stop-color="#0B2349" stop-opacity="0.46"/>
+      <stop offset="1" stop-color="#071831" stop-opacity="0.56"/>
+    </linearGradient>
+    <radialGradient id="socketFill" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(838 270) rotate(90) scale(100)">
+      <stop offset="0" stop-color="#6EB7F0" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#2E65A8" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#10264C"/>
+    </radialGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="drop" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="9" stdDeviation="10" flood-color="#020915" flood-opacity="0.55"/>
+    </filter>
+    <pattern id="stars" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="7" r="1" fill="#DDF3FF" fill-opacity="0.28"/>
+      <circle cx="26" cy="18" r="0.8" fill="#9FD4FF" fill-opacity="0.22"/>
+    </pattern>
+  </defs>
+
+  <g filter="url(#drop)">
+    <!-- Fully intact unified body -->
+    <path d="M70 123H883C909 123 930 144 930 170V340C930 366 909 387 883 387H117C91 387 70 366 70 340V123Z" fill="url(#glassFill)"/>
+    <path d="M70 123H883C909 123 930 144 930 170V340C930 366 909 387 883 387H117C91 387 70 366 70 340V123Z" fill="url(#stars)" opacity="0.45"/>
+
+    <!-- Solid title plaque -->
+    <path d="M118 40H874C898 40 918 60 918 84V124C918 148 898 168 874 168H118C94 168 74 148 74 124V84C74 60 94 40 118 40Z" fill="url(#titleFill)"/>
+    <path d="M118 40H874C898 40 918 60 918 84V124C918 148 898 168 874 168H118C94 168 74 148 74 124V84C74 60 94 40 118 40Z" stroke="url(#frameMetal)" stroke-width="9"/>
+    <path d="M125 52H866C887 52 904 69 904 90V118C904 139 887 156 866 156H125C104 156 87 139 87 118V90C87 69 104 52 125 52Z" stroke="#79BBEA" stroke-opacity="0.66" stroke-width="2"/>
+
+    <!-- Solid outer frame, never transparent -->
+    <path d="M70 122V340C70 366 91 387 117 387H883C909 387 930 366 930 340V168" stroke="url(#frameMetal)" stroke-width="12"/>
+    <path d="M88 160V334C88 353 103 369 122 369H878C897 369 912 353 912 334V171" stroke="#6FA6D5" stroke-opacity="0.78" stroke-width="3"/>
+    <path d="M104 180V333C104 345 114 355 126 355H713" stroke="#BCE3FF" stroke-opacity="0.25" stroke-width="2"/>
+
+    <!-- Left temple pillar -->
+    <g>
+      <path d="M49 89L70 54L91 89L83 355L70 382L57 355Z" fill="url(#frameDark)" stroke="url(#frameMetal)" stroke-width="5"/>
+      <path d="M36 86L70 64L104 86L95 100H45Z" fill="url(#frameMetal)"/>
+      <path d="M43 61L70 35L97 61L89 73H51Z" fill="url(#frameMetal)"/>
+      <path d="M56 35L70 14L84 35Z" fill="#CDEEFF" stroke="#6FA9DD" stroke-width="2"/>
+      <circle cx="70" cy="106" r="10" fill="#79D6FF" filter="url(#softGlow)"/>
+      <path d="M49 176C24 186 22 212 43 224C20 235 20 266 49 277" stroke="#A7D7F8" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <!-- Right temple pillar -->
+    <g transform="translate(1000 0) scale(-1 1)">
+      <path d="M49 89L70 54L91 89L83 355L70 382L57 355Z" fill="url(#frameDark)" stroke="url(#frameMetal)" stroke-width="5"/>
+      <path d="M36 86L70 64L104 86L95 100H45Z" fill="url(#frameMetal)"/>
+      <path d="M43 61L70 35L97 61L89 73H51Z" fill="url(#frameMetal)"/>
+      <path d="M56 35L70 14L84 35Z" fill="#CDEEFF" stroke="#6FA9DD" stroke-width="2"/>
+      <circle cx="70" cy="106" r="10" fill="#79D6FF" filter="url(#softGlow)"/>
+      <path d="M49 176C24 186 22 212 43 224C20 235 20 266 49 277" stroke="#A7D7F8" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <!-- Top crest and wings -->
+    <path d="M500 12L525 42L513 73H487L475 42Z" fill="#A6E2FF" stroke="url(#frameMetal)" stroke-width="4" filter="url(#softGlow)"/>
+    <path d="M486 59C425 28 337 33 269 58C217 77 168 81 111 70" stroke="url(#frameMetal)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M514 59C575 28 663 33 731 58C783 77 832 81 889 70" stroke="url(#frameMetal)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M488 71C440 52 395 58 352 83C315 104 276 107 235 94" stroke="#76AFE0" stroke-opacity="0.72" stroke-width="5" stroke-linecap="round"/>
+    <path d="M512 71C560 52 605 58 648 83C685 104 724 107 765 94" stroke="#76AFE0" stroke-opacity="0.72" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Row divider -->
+    <path d="M126 273H690" stroke="#A9D8F7" stroke-opacity="0.42" stroke-width="2"/>
+    <path d="M120 273L128 266L136 273L128 280Z" fill="#A9D8F7" fill-opacity="0.7"/>
+    <path d="M680 273L688 266L696 273L688 280Z" fill="#A9D8F7" fill-opacity="0.7"/>
+
+    <!-- Integrated level socket -->
+    <circle cx="838" cy="270" r="111" fill="#0B2449" stroke="url(#frameMetal)" stroke-width="12"/>
+    <circle cx="838" cy="270" r="98" fill="url(#socketFill)" stroke="#80B9E6" stroke-width="4"/>
+    <circle cx="838" cy="270" r="86" stroke="#D9F0FF" stroke-opacity="0.7" stroke-width="2"/>
+    <path d="M838 151L852 168L838 185L824 168Z" fill="#8AD7FF" stroke="#EAF8FF" stroke-width="2" filter="url(#softGlow)"/>
+    <path d="M838 355L852 372L838 389L824 372Z" fill="#8AD7FF" stroke="#EAF8FF" stroke-width="2" filter="url(#softGlow)"/>
+    <path d="M732 240C709 221 701 194 713 169C727 187 741 193 760 193" stroke="url(#frameMetal)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M732 300C709 319 701 346 713 371C727 353 741 347 760 347" stroke="url(#frameMetal)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Bottom crest -->
+    <path d="M500 371L516 389L500 407L484 389Z" fill="#81CFFF" stroke="#E8F7FF" stroke-width="3" filter="url(#softGlow)"/>
+    <path d="M478 386C431 372 388 372 342 386" stroke="url(#frameMetal)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M522 386C569 372 612 372 658 386" stroke="url(#frameMetal)" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>
