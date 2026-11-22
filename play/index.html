@@ -5,11 +5,73 @@
     <link rel="icon" type="image/svg+xml" href="/play/vite.svg" />
     <meta name="robots" content="noindex" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Tablets: the game is designed for phones, so on a screen whose short side is 600px or
+      // more it's laid out at a phone-like width (about 800px tall) and scaled up to fill the
+      // screen. Everything scales together: text, art, overlays and full-screen views.
+      // (The Android app turns on the WebView setting that honours this; see MainActivity.)
+      (function () {
+        var shortSide = Math.min(screen.width, screen.height);
+        var longSide = Math.max(screen.width, screen.height);
+        if (shortSide < 600) return;
+        var width = Math.round(Math.min(560, Math.max(430, (shortSide * 800) / longSide)));
+        document.querySelector('meta[name="viewport"]').setAttribute("content", "width=" + width + ", user-scalable=no");
+        document.documentElement.setAttribute("data-tablet", String(width));
+      })();
+    </script>
     <title>Immortal Dynasty: Origin – Play</title>
-    <script type="module" crossorigin src="/play/assets/index-Bfk5ooRo.js"></script>
-    <link rel="stylesheet" crossorigin href="/play/assets/index-D7FNEKVM.css">
+    <style>
+      /* Portrait only: a touch screen turned sideways (web) is asked to turn upright. */
+      #rotate-notice {
+        display: none;
+      }
+      @media (orientation: landscape) and (hover: none) and (pointer: coarse) {
+        #rotate-notice {
+          position: fixed;
+          inset: 0;
+          z-index: 2147483647;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          padding: 24px;
+          text-align: center;
+          color: #f0d48a;
+          background: radial-gradient(60% 70% at 50% 40%, rgba(70, 110, 255, 0.25), transparent 70%), linear-gradient(180deg, #070a18, #05060f);
+          font-family: Georgia, "Times New Roman", serif;
+        }
+        #rotate-notice .rn-phone {
+          width: 46px;
+          height: 78px;
+          border: 3px solid #f0d48a;
+          border-radius: 10px;
+          animation: rn-turn 2.4s ease-in-out infinite;
+        }
+        #rotate-notice b {
+          font-size: 22px;
+          letter-spacing: 0.04em;
+        }
+        #rotate-notice span {
+          font-family: system-ui, sans-serif;
+          font-size: 14px;
+          color: #c9d2ee;
+        }
+        @keyframes rn-turn {
+          0%, 30% { transform: rotate(-90deg); }
+          60%, 100% { transform: rotate(0deg); }
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/play/assets/index-DhDLI4HU.js"></script>
+    <link rel="stylesheet" crossorigin href="/play/assets/index-B5lXEbmN.css">
   </head>
   <body>
     <div id="root"></div>
+    <div id="rotate-notice" role="alert">
+      <div class="rn-phone" aria-hidden="true"></div>
+      <b>Please turn your device upright</b>
+      <span>Immortal Dynasty is played in portrait.</span>
+    </div>
   </body>
 </html>
